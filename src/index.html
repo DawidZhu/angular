@@ -8,6 +8,14 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+  <!-- 项目只有一个index.html, 通过main.ts加载其他组件，来拼装页面-->
   <app-root></app-root>
+  
+  <!-- 引入Hero Component-->
+  <app-heroes></app-heroes>
+  <!-- 引入外部 JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 </body>
 </html>

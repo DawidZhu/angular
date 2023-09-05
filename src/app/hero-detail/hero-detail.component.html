@@ -1,0 +1,20 @@
+ <!--
+     现在，组件的模板中有一个列表。要想在点击列表中英雄的名字时显示该英雄的详情，
+     就要在模板中添加一个区域，用来显示这些详情。
+     将 *ngIf 指令添加到包装 hero 详细信息的 <div> 中。
+     该指令会告诉 Angular 仅在实际定义 selectedHero 时（在它被通过点击英雄来选择）。
+     selectedHero 与 component 变量对应
+     你使用 *ngIf 来根据条件包含或排除了一段 HTML。
+     ngIf	: 只有在有消息时才会显示消息区。
+     括号 ： Bracket ， 大括号： Curly brackets，圆括号： Round brackets， 方括号： Square brackets
+ -->
+ <div *ngIf="hero">
+     <h2>{{hero.name | uppercase}} Details</h2>
+     <div>id: {{hero.id}}</div>
+     <div>
+       <label for="hero-name">Hero name: </label>
+       <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
+     </div>
+   </div>
+<!-- 把一个后退按钮添加到组件模板的底部，并且把它绑定到组件的 goBack() 方法 -->
+   <button type="button" (click)="goBack()">go back</button>

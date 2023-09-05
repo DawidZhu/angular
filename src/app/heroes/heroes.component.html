@@ -1,0 +1,81 @@
+<!-- 
+     Component 与 Html template 交互，数据绑定
+     Update the binding in the template to announce the hero's name 
+     and show both id and name in a details display like this:
+     <h2>{{hero.name}} Details</h2>
+-->
+
+<!-- Format with the UppercasePipe
+     绑定表达式中的 uppercase 位于管道操作符 | 后面，用来调用内置管道 UppercasePipe。
+-->
+<h2>{{hero.name | uppercase}} Details</h2>
+<div>
+      id:  {{hero.id}}    
+</div>
+<div>
+     name:  {{hero.name}}
+</div>
+<!-- Two-way binding 
+The text box should both display the hero's name property and update that property as the user types. 
+That means data flows from the component class out to the screen and from the screen back to the class.
+[(ngModel)] is Angular's two-way data binding syntax.
+ngModel 它属于一个可选模块 FormsModule，你必须自行添加此模块才能使用该指令。
+括号 ： Bracket ， 大括号： Curly brackets，圆括号： Round brackets， 方括号： Square brackets
+-->
+<div>
+<label for="name">Hero Name: </label>
+<input id="name" [(ngModel)] = "hero.name" placeholder="name">
+
+</div>
+
+<h2>My Heroes</h2>
+<!-- class="heroes" ???-->
+<ul class="heroes">
+     <!--
+     *ngFor 是一个 Angular 的复写器（repeater）指令
+     The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list.
+     你使用 *ngIf 来根据条件包含或排除了一段 HTML。
+-->
+  <li *ngFor="let hero of heroes">
+     <!-- Add a click event binding 
+     click 外面的圆括号会让 Angular 监听这个 <button> 元素的 click 事件。 
+          当用户点击 <button> 时，Angular 就会执行表达式 onSelect(hero)。
+            括号 ： Bracket ， 大括号： Curly brackets，圆括号： Round brackets， 方括号： Square brackets
+     -->
+     <!--在 HeroesComponent 模板中的 <button> 元素上添加 [class.selected] 绑定
+         你可以用 class 绑定来切换 CSS 的样式类。  -->
+         <!-- 
+    <button type="button" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+      <span class="badge">{{hero.id}}</span>
+      <span class="name">{{hero.name}}</span>
+    </button>
+    -->
+
+    <a routerLink="/detail/{{hero.id}}">
+     <span class="badge">{{hero.id}}</span> {{hero.name}}
+   </a>
+   
+  </li>
+</ul>
+<!--
+     The HeroDetailComponent selector is 'app-hero-detail'. 
+     Add an <app-hero-detail> element near the bottom of the HeroesComponent template, 
+     where the hero detail view used to be.
+-->
+<!--
+     [hero]="selectedHero" is an Angular property binding. 属性绑定
+     这是一种单向 one-way 数据绑定。从 HeroesComponent 的 selectedHero 属性绑定到目标元素的 hero 属性，
+     并映射到了 HeroDetailComponent 的 hero 属性，how to mapping??
+-->
+<!--
+     现在，当用户在列表中点击某个英雄时，selectedHero 就改变了。
+     当 selectedHero 改变时，属性绑定会修改 HeroDetailComponent 的 hero 属性，
+     HeroDetailComponent 就会显示这个新的英雄。
+-->
+<!-- 你用属性绑定语法来让父组件 HeroesComponent 可以控制子组件 HeroDetailComponent。 -->
+<!--  在父组件中引用子组件，形成父子关系，才能通过输入属性传递数据,通过模板建立父子关系 -->
+<!--app-hero-detail 表示要在此处显示子组件的内容，并把父组件的  selectedHero 输入属性传给子组件的 hero属性 -->
+<!--  detail 放到单独页面显示
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+-->
+

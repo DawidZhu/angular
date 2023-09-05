@@ -1,0 +1,12 @@
+<h2>Top Heroes</h2>
+<div class="heroes-menu">
+     <!--*ngFor 复写器为组件的 heroes 数组中的每个条目创建了一个链接。 
+     The *ngFor repeater creates as many links as are in the component's heroes array.
+     -->
+<!-- 在 *ngFor 复写器中使用 Angular 的插值绑定来把当前迭代的 hero.id 插入到每个 routerLink 中。
+     You used router link parameters to navigate to the detail view of a user-selected hero
+-->
+  <a *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}">
+    {{hero.name}}
+  </a>
+</div>

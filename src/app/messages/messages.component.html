@@ -1,0 +1,15 @@
+<!--
+     This template binds directly to the component's messageService.
+     ngIf	: 只有在有消息时才会显示消息区。
+     *ngFor: 在一系列 <div> 元素中展示消息列表。
+     Presents the list of messages in repeated <div> elements.
+-->
+<div *ngIf="messageService.messages.length">
+
+     <h2>Messages</h2>
+     <button type="button" class="clear"
+             (click)="messageService.clear()">Clear messages</button>
+     <div *ngFor='let message of messageService.messages'> 
+          {{message}} </div>
+   
+   </div>
